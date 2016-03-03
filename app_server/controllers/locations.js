@@ -10,5 +10,5 @@ module.exports.locationInfo = function(req, res) {
 
 /* GET Add Review page */
 module.exports.addReview = function(req, res) {
-  res.render('index', { title: 'Add Review' }); // render view index.jade
+  res.render('location_review_form', { title: 'Add Review' }); // render view index.jade
 };
