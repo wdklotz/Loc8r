@@ -5,7 +5,7 @@ module.exports.homeList = function(req, res) {
 
 /* GET Location Info page */
 module.exports.locationInfo = function(req, res) {
-  res.render('index', { title: 'Location Info' }); // render view index.jade
+  res.render('location_info', { title: 'Location Info' }); // render view index.jade
 };
 
 /* GET Add Review page */
