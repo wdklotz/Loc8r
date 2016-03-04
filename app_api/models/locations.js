@@ -1,3 +1,4 @@
+//        ./app_api/models
 var mongoose = require('mongoose');
 
 var openingTimeSchema = new mongoose.Schema({
@@ -24,10 +25,11 @@ var locationSchema = new mongoose.Schema({
 	reviews: [reviewSchema]
 });
 
-var Location = mongoose.model('Location', locationSchema);
+// compile the schema
+var Loc = mongoose.model('Location', locationSchema);
 
 // two document samples
-//var loc1 = new Location({
+//var loc1 = new Loc({
 //name: 'Starcups',
 //address: '125 High Street, Reading, RG6 1PS',
 //rating: 3,
@@ -65,7 +67,7 @@ var Location = mongoose.model('Location', locationSchema);
 //if(err) return console.error(err);
 //});
 
-//var loc2 = new Location({
+//var loc2 = new Loc({
 //name: 'French Coffee Home',
 //address: '27 Route du Château, Claix, F-38640',
 //rating: 3,
