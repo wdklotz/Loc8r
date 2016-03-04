@@ -5,8 +5,12 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
+//routing files
 var routes = require('./app_server/routes/index');
 var users = require('./app_server/routes/users');
+
+//db connection
+require('./app_server/models/db');
 
 var app = express();
 app.locals.title = "Loc8r"
