@@ -1,4 +1,6 @@
-//        ./app_api/controllers
+//=============================
+//   /app_api/controllers
+//=============================
 
 var mongoose = require('mongoose');
 var Loc = mongoose.model('Location');
@@ -139,7 +141,7 @@ module.exports.reviewsUpdateOne = function(req, res) {
 		} else {
 			sendJsonResponse(res, 404, {"message": "No review to update"});
 		}
-		});
+	});
 };
 
 //--------------------reviewsDeleteOne---------------------
@@ -173,5 +175,5 @@ module.exports.reviewsDeleteOne = function(req, res) {
 		} else {
 			sendJsonResponse(res, 404, {"message": "No review to delete"});
 		}
-		});
+	});
 };

@@ -1,4 +1,7 @@
-//        ./app_api/routes
+//=============================
+//   /app_api/routes
+//=============================
+
 var express = require('express');
 var router = express.Router();
 var ctrlLocations = require('../controllers/locations');
