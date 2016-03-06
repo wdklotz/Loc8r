@@ -9,4 +9,4 @@
 
 
 
-hold on book chapter 7.4
+book up to part 3
