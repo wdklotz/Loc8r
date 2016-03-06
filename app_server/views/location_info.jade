@@ -5,7 +5,7 @@ include include/sharedHTMLfunctions
 block content
    .row.page-header
       .col-lg-12
-         h1 Starcups
+         h1= location.name
    .row
       .col-xs-12.col-md-9
          .row
@@ -53,7 +53,8 @@ block content
                                  span.rating
                                     +outputRating(review.rating)
                                  span.reviewAuthor #{review.author}
-                                 small.reviewTimestamp #{review.timestamp}
+                                 small.reviewTimestamp 
+                                    +formatDate(review.createdOn)
                               .col-xs-12
                                  p !{(review.reviewText).replace(/\n/g, '<br/>')}
       .col-xs-12.col-md-3
