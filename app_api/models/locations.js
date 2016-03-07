@@ -31,7 +31,7 @@ var locationSchema = new mongoose.Schema({
 // compile the schema
 var Loc = mongoose.model('Location', locationSchema);
 
-//three document samples: loc0 - loc2
+// 5 document samples: loc0 - loc3
 var loc0 = new Loc({
 name: 'Mac Donalds',
 address: '120 High Street, Reading, RG6 1PS',
@@ -128,6 +128,70 @@ reviews: [{
 	  reviewText: 'It was okay. Coffee wasn\'t great, but the wifi was fast.'
 		  }]
 });
+var loc3 = new Loc({
+	name: 'Swing Queen',
+	address: '126 High Street, Reading, RG6 1PS',
+	rating: 3,
+	facilities: ['Jazz', 'Food', 'Premium wifi', 'Theater'],
+	coords: [5.6647765999, 45.1082854],
+	openingTimes: [{
+		  days: 'Monday - Friday',
+		  opening: '7:00am',
+		  closing: '7:00pm',
+		  closed: false
+		  },{
+		  days: 'Saturday',
+		  opening: '8:00am',
+		  closing: '5:00pm',
+		  closed: false
+		  },{
+		  days: 'Sunday',
+		  closed: true
+		  }],
+	  reviews: [{
+		  author: 'Simon Holmes',
+		  rating: 5,
+		  timestamp: '16 July 2013',
+		  reviewText: 'What a great place. I can\'t say enough good things about it.'
+		  },{
+		  author: 'Charlie Chaplin',
+		  rating: 3,
+		  timestamp: '16 June 2013',
+		  reviewText: 'It was okay. Coffee wasn\'t great, but the wifi was fast.'
+		  }]
+});
+var loc4 = new Loc({
+	name: 'Costy',
+	address: '129 High Street, Reading, RG6 1PS',
+	rating: 3,
+	facilities: ['Hot drinks', 'Food', 'Alcoholic drinks', 'Music'],
+	coords: [5.6647765999, 45.1082854],
+	openingTimes: [{
+		  days: 'Monday - Friday',
+		  opening: '7:00am',
+		  closing: '7:00pm',
+		  closed: false
+		  },{
+		  days: 'Saturday',
+		  opening: '8:00am',
+		  closing: '5:00pm',
+		  closed: false
+		  },{
+		  days: 'Sunday',
+		  closed: true
+		  }],
+	  reviews: [{
+		  author: 'Simon Holmes',
+		  rating: 5,
+		  timestamp: '16 July 2013',
+		  reviewText: 'What a great place. I can\'t say enough good things about it.'
+		  },{
+		  author: 'Charlie Chaplin',
+		  rating: 3,
+		  timestamp: '16 June 2013',
+		  reviewText: 'It was okay. Coffee wasn\'t great, but the wifi was fast.'
+		  }]
+});
 
 //loc0.save(function(err){
 //	if(err) return console.error(err);
@@ -136,5 +200,11 @@ reviews: [{
 //	if(err) return console.error(err);
 //});
 //loc2.save(function(err){
-//	if(err) return console.error(err);
+//if(err) return console.error(err);
+//});
+//loc3.save(function(err){
+//if(err) return console.error(err);
+//});
+//loc4.save(function(err){
+//if(err) return console.error(err);
 //});
