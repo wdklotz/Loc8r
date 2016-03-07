@@ -160,7 +160,7 @@ module.exports.doAddReview = function(req, res){
 			json : postdata
 		};
 	if (!postdata.author || !postdata.rating || !postdata.reviewText) {
-		res.redirect('/location/' + locationid + '/reviews/new?err=val');
+		res.redirect('/location/' + locationid + '/review/new?err=val');
 	} else {
 		request(requestOptions, function(err, response, body) {
 			if (response.statusCode === 201) {

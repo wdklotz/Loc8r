@@ -19,8 +19,11 @@ var doAddReview = function(req, res, location) {
 			rating: req.body.rating,
 			reviewText: req.body.reviewText
 		});
+//	console.log('daAddReview:',location);
 	location.save(function(err, location) {
 		var thisReview;
+//		console.log('location.save(err)',err);
+//		console.log('location.save(location)',location);
 		if (err) {
 			sendJsonResponse(res, 400, err);
 		} else {
