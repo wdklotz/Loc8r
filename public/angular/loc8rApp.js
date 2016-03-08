@@ -15,24 +15,25 @@ var _isNumeric = function (n) {
 
 var formatDistance = function () {
 	return function (distance) {
+		console.log(distance);
 		var numDistance, unit;
 		if (distance && _isNumeric(distance)) {
-			if (distance > 1) {
-				numDistance = parseFloat(distance).toFixed(1);
+			if (distance > 1000) {
+				numDistance = parseFloat(distance/1000.).toFixed(1);
 				unit = 'km';
 			} else {
-				numDistance = parseInt(distance * 1000,10);
+				numDistance = parseInt(distance,10);
 				unit = 'm';
 			}
 			return numDistance + unit;
 		} else {
-			return "?";
+			return "zero";
 		}
 	};
 };
 
 var loc8rData = function ($http) {
-	return $http.get('/api/locations?lng=-0.9690880001&lat=51.4550405&maxDistance=2000');
+	return $http.get('/api/locations?lng=5.672924999999964&lat=45.1199439&maxDistance=2000');
 };
 
 var locationListCtrl = function ($scope, loc8rData) {

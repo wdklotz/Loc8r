@@ -23,7 +23,7 @@ var locationSchema = new mongoose.Schema({
 	address: String,
 	rating: { type: Number, 'default' : 0, min : 0, max : 5},
 	facilities: [String],
-	coords: {type: [Number], index: '2dsphere', required: true},
+	coordinates: {type: [Number], index: '2dsphere', required: true},
 	openingTimes: [openingTimeSchema],
 	reviews: [reviewSchema]
 });
@@ -31,13 +31,13 @@ var locationSchema = new mongoose.Schema({
 // compile the schema
 var Loc = mongoose.model('Location', locationSchema);
 
-// 5 document samples: loc0 - loc3
+// 6 document samples: loc0 - loc5
 var loc0 = new Loc({
-name: 'Mac Donalds',
-address: '120 High Street, Reading, RG6 1PS',
+name: 'Marie',
+address: 'Place Hector Berlioz, 38640 Claix, France',
 rating: 3,
-facilities: ['Hot drinks', 'Food', 'Premium wifi'],
-coords: [-0.969088, 51.4550405],
+facilities: ['Permits','Certificates'],
+coordinates: [5.672924999999964+8.985e-3, 45.1199439],
 openingTimes: [{
 	  days: 'Monday - Friday',
 	  opening: '7:00am',
@@ -64,12 +64,13 @@ reviews: [{
 	  reviewText: 'It was okay. Coffee wasn\'t great, but the wifi was fast.'
 		  }]
 });
+
 var loc1 = new Loc({
-name: 'Starcups',
-address: '125 High Street, Reading, RG6 1PS',
+name: 'PHARMACIE DU BOURG',
+address: '28, rue Beyle Stendhal, 38640 CLAIX, France',
 rating: 3,
-facilities: ['Hot drinks', 'Food', 'Premium wifi'],
-coords: [-0.9690884, 51.455041],
+facilities: ['Pharmacie', 'Vente et location de matériel médical et orthopédique'],
+coordinates: [5.671848, 45.120609],
 openingTimes: [{
 	  days: 'Monday - Friday',
 	  opening: '7:00am',
@@ -96,12 +97,13 @@ reviews: [{
 	  reviewText: 'It was okay. Coffee wasn\'t great, but the wifi was fast.'
 		  }]
 });
+
 var loc2 = new Loc({
-name: 'French Coffee Home',
-address: '27 Route du Château, Claix, F-38640',
+name: 'Loïc Fleurs',
+address: '2, rue Beyle Stendhal, 38640 CLAIX, France',
 rating: 3,
-facilities: ['Hot drinks', 'Premium wifi'],
-coords: [5.6647765999, 45.1082854],
+facilities: ['Fleurs', 'Plantes', 'Interflora'],
+coordinates: [5.671848, 45.120609],
 openingTimes: [{
 	  days: 'Monday - Friday',
 	  opening: '7:00am',
@@ -128,44 +130,46 @@ reviews: [{
 	  reviewText: 'It was okay. Coffee wasn\'t great, but the wifi was fast.'
 		  }]
 });
+
 var loc3 = new Loc({
-	name: 'Swing Queen',
-	address: '126 High Street, Reading, RG6 1PS',
-	rating: 3,
-	facilities: ['Jazz', 'Food', 'Premium wifi', 'Theater'],
-	coords: [5.6647765999, 45.1082854],
-	openingTimes: [{
-		  days: 'Monday - Friday',
-		  opening: '7:00am',
-		  closing: '7:00pm',
-		  closed: false
-		  },{
-		  days: 'Saturday',
-		  opening: '8:00am',
-		  closing: '5:00pm',
-		  closed: false
-		  },{
-		  days: 'Sunday',
-		  closed: true
-		  }],
-	  reviews: [{
-		  author: 'Simon Holmes',
-		  rating: 5,
-		  timestamp: '16 July 2013',
-		  reviewText: 'What a great place. I can\'t say enough good things about it.'
-		  },{
-		  author: 'Charlie Chaplin',
-		  rating: 3,
-		  timestamp: '16 June 2013',
-		  reviewText: 'It was okay. Coffee wasn\'t great, but the wifi was fast.'
-		  }]
+name: 'BOUCHERIE DU BOURG',
+address: '6, rue Beyle Stendhal, France',
+rating: 3,
+facilities: ['Boucherie', 'Charcuterie', 'Traiteur'],
+coordinates: [5.671848, 45.120609],
+openingTimes: [{
+	  days: 'Monday - Friday',
+	  opening: '7:00am',
+	  closing: '7:00pm',
+	  closed: false
+	  },{
+	  days: 'Saturday',
+	  opening: '8:00am',
+	  closing: '5:00pm',
+	  closed: false
+	  },{
+	  days: 'Sunday',
+	  closed: true
+	  }],
+  reviews: [{
+	  author: 'Simon Holmes',
+	  rating: 5,
+	  timestamp: '16 July 2013',
+	  reviewText: 'What a great place. I can\'t say enough good things about it.'
+	  },{
+	  author: 'Charlie Chaplin',
+	  rating: 3,
+	  timestamp: '16 June 2013',
+	  reviewText: 'It was okay. Coffee wasn\'t great, but the wifi was fast.'
+	  }]
 });
+
 var loc4 = new Loc({
-	name: 'Costy',
-	address: '129 High Street, Reading, RG6 1PS',
-	rating: 3,
-	facilities: ['Hot drinks', 'Food', 'Alcoholic drinks', 'Music'],
-	coords: [5.6647765999, 45.1082854],
+name: 'LE SAINT-ANGE',
+address: '2, rue Louis Pasteur, 38640 CLAIX, France',
+rating: 3,
+facilities: ['Restaurant d\'ouvrier', 'Bar', 'TV online', 'Alcoholic drinks', 'Music', 'Wifi'],
+coordinates: [5.672288, 45.119859],
 	openingTimes: [{
 		  days: 'Monday - Friday',
 		  opening: '7:00am',
@@ -193,18 +197,58 @@ var loc4 = new Loc({
 		  }]
 });
 
-//loc0.save(function(err){
-//	if(err) return console.error(err);
-//});
-//loc1.save(function(err){
-//	if(err) return console.error(err);
-//});
-//loc2.save(function(err){
-//if(err) return console.error(err);
-//});
-//loc3.save(function(err){
-//if(err) return console.error(err);
-//});
-//loc4.save(function(err){
-//if(err) return console.error(err);
-//});
+var loc5 = new Loc({
+name: 'WD\'s home',
+address: '27, route du château, 38640 CLAIX, France',
+rating: 5,
+facilities: ['food', 'Bar', 'TV online', 'Alcoholic drinks', 'Music', 'Wifi'],
+coordinates: [5.664734, 45.108254],
+	openingTimes: [{
+		  days: 'Monday - Friday',
+		  opening: '7:00am',
+		  closing: '7:00pm',
+		  closed: false
+		  },{
+		  days: 'Saturday',
+		  opening: '8:00am',
+		  closing: '5:00pm',
+		  closed: false
+		  },{
+		  days: 'Sunday',
+		  closed: true
+		  }],
+	  reviews: [{
+		  author: 'Simon Holmes',
+		  rating: 5,
+		  timestamp: '16 July 2013',
+		  reviewText: 'What a great place. I can\'t say enough good things about it.'
+		  },{
+		  author: 'Charlie Chaplin',
+		  rating: 3,
+		  timestamp: '16 June 2013',
+		  reviewText: 'It was okay. Coffee wasn\'t great, but the wifi was fast.'
+		  }]
+});
+
+function filldb() {
+	loc0.save(function(err){
+		if(err) return console.error(err);
+	});
+	loc1.save(function(err){
+		if(err) return console.error(err);
+	});
+	loc2.save(function(err){
+	if(err) return console.error(err);
+	});
+	loc3.save(function(err){
+	if(err) return console.error(err);
+	});
+	loc4.save(function(err){
+	if(err) return console.error(err);
+	});
+	loc5.save(function(err){
+	if(err) return console.error(err);
+	});
+};
+
+//var fill = filldb();
