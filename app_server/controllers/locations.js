@@ -39,28 +39,6 @@ var _showError = function (req, res, status) {
 		});
 };
 
-var getLocationInfo = function (req, res, callback) {
-	var requestOptions, path;
-	path = "/api/location/" + req.params.locationid;
-	requestOptions = {
-		url : apiOptions.server + path,
-		method : "GET",
-		json : {}
-		};
-	request(requestOptions, function(err, response, body) {
-		var data = body;
-		if (response.statusCode === 200) {
-			data.coords = {
-					lng : body.coords[0],
-					lat : body.coords[1]
-			};
-			callback(req, res, data);
-		} else {
-			_showError(req, res, response.statusCode);
-		}
-	});
-};
-
 //=====================================================	
 //------------------render home page-------------------
 var renderHomepage = function(req, res) {
@@ -93,6 +71,27 @@ module.exports.homeList = function(req, res){
 	  },
 	  location : locDetail
 	  });
+};
+var getLocationInfo = function (req, res, callback) {
+	var requestOptions, path;
+	path = "/api/location/" + req.params.locationid;
+	requestOptions = {
+		url : apiOptions.server + path,
+		method : "GET",
+		json : {}
+		};
+	request(requestOptions, function(err, response, body) {
+		var data = body;
+		if (response.statusCode === 200) {
+			data.coords = {
+					lng : body.coordinates[0],
+					lat : body.coordinates[1]
+			};
+			callback(req, res, data);
+		} else {
+			_showError(req, res, response.statusCode);
+		}
+	});
 };
 //--------ROUTE: router.get('/location/:locationd', ...locationInfo)------------
 module.exports.locationInfo = function(req, res) {
