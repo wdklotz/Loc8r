@@ -27,7 +27,7 @@ var formatDistance = function () {
 			}
 			return numDistance + unit;
 		} else {
-			return "zero";
+			return "0m";
 		}
 	};
 };

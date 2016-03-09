@@ -37,7 +37,7 @@ name: 'Marie',
 address: 'Place Hector Berlioz, 38640 Claix, France',
 rating: 3,
 facilities: ['Permits','Certificates'],
-coordinates: [5.672924999999964+8.985e-3, 45.1199439],
+coordinates: [5.672924999999964, 45.1199439],
 openingTimes: [{
 	  days: 'Monday - Friday',
 	  opening: '7:00am',

@@ -11,18 +11,6 @@ if (process.env.NODE_ENV === 'production') {
 	apiOptions.server = "https://getting-mean-loc8r.herokuapp.com";
 }
 
-//var _formatDistance = function (distance) {
-//	var numDistance, unit;
-//	if (distance > 1) {
-//		numDistance = parseFloat(distance).toFixed(1);
-//		unit = 'km';
-//	} else {
-//		numDistance = parseInt(distance * 1000,10);
-//		unit = 'm';
-//	}
-//	return numDistance + unit;
-//};
-
 var _showError = function (req, res, status) {
 	var title, content;
 	if (status === 404) {
@@ -59,7 +47,7 @@ module.exports.homeList = function(req, res){
 };
 
 //-------------------render Location Details page-----------------
- var renderDetailPage = function(reg,res, locDetail){
+var renderDetailPage = function(reg,res, locDetail){
 	res.render('location_info', { 
 	  title: locDetail.name,
 	  pageHeader: {title: locDetail.name},
@@ -70,7 +58,7 @@ module.exports.homeList = function(req, res){
 			  to help other people just like you.',
 	  },
 	  location : locDetail
-	  });
+	});
 };
 var getLocationInfo = function (req, res, callback) {
 	var requestOptions, path;
