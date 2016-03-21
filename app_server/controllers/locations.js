@@ -93,7 +93,8 @@ var renderReviewForm = function(req, res, locDetail) {
   res.render('location_review_form', { 
 	  title: 'Review '+locDetail.name+' on Loc8r',
 	  pageHeader: { title: 'Review '+locDetail.name},
-	  error: req.query.err
+	  error: req.query.err,
+	  url : req.originalUrl
   });
 };
 //---ROUTE: router.get ('/location/:locationid/review/new', ....addReview)----
