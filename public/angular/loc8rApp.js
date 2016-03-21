@@ -15,7 +15,7 @@ var _isNumeric = function (n) {
 
 var formatDistance = function () {
 	return function (distance) {
-		console.log(distance);
+		// console.log(distance);
 		var numDistance, unit;
 		if (distance && _isNumeric(distance)) {
 			if (distance > 1000) {
@@ -32,14 +32,15 @@ var formatDistance = function () {
 	};
 };
 
-var loc8rData = function ($http) {
+var loc8rData = function ($http,$log) {
 	var locationByCoords = function(lat, lng) {
-		return $http.get('/api/locations?lng='+lng+'&lat='+lat+'&maxDistance=2000');
+		// $log.info('lat='+lat+', lng='+lng);
+		return $http.get('/api/locations?lng='+lng+'&lat='+lat+'&maxDistance=15000');
+	// return $http.get('/api/locations?lng=5.672924999999964&lat=45.1199439&maxDistance=2000');
 	};
 	return {
 		locationByCoords : locationByCoords
 	};
-	// return $http.get('/api/locations?lng=5.672924999999964&lat=45.1199439&maxDistance=2000');
 };
 
 var geolocation = function () {
@@ -61,16 +62,14 @@ var locationListCtrl = function ($scope, loc8rData, geolocation) {
 	$scope.getData = function (position) {
 		var lat = position.coords.latitude;
 		var lng = position.coords.longitude;
-		window.alert('lat='+lat+'lng='+lng);
 
 		$scope.message = 'Searching for nearby places';
-		loc8rData.locationByCoords( lat, lng)
-		.success(function(data) { 
-			$scope.message = data.length > 0 ? "" : "No locations found";
-			$scope.data = { locations: data };
-		})
-		.error(function(e) { 
-			$scope.message = "Sorry, something's gone wrong "; 
+		loc8rData.locationByCoords(lat,lng)
+		.then(function(res) { 
+			$scope.message = res.data.length > 0 ? "" : "No locations found";
+			$scope.data = { locations: res.data };
+		}, function(res) { 
+			$scope.message = "Sorry, something's gone wrong [Status: "+res.statusText+"]"; 
 		});
 	};
 	$scope.showError = function (error) {
