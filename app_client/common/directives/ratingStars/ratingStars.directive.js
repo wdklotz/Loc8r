@@ -1,3 +1,5 @@
+(function() {     // open IIFE
+
 var ratingStars = function() {
    return {
     restrict: 'EA',
@@ -10,3 +12,5 @@ var ratingStars = function() {
 
 angular.module('loc8rApp')
   .directive('ratingStars',ratingStars);
+
+})();  // close & invoke IIFE

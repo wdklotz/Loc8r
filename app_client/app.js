@@ -1,16 +1,20 @@
-angular.module('loc8rApp', ['ngRoute']);
+(function() {     // open IIFE
 
-function config($routeProvider) {
-  $routeProvider
-    .when('/', {
-      templateUrl: 'home/home.view.html',
-      controller: 'homeCtrl',
-      controllerAs: 'vm'
-    })
-    .otherwise({
-      redirectTo: '/'
-    });
-};
+  angular.module('loc8rApp', ['ngRoute']);
 
-angular.module('loc8rApp')
-  .config(['$routeProvider', config]);
+  function config($routeProvider) {
+    $routeProvider
+      .when('/', {
+        templateUrl: 'home/home.view.html',
+        controller: 'homeCtrl',
+        controllerAs: 'vm'
+      })
+      .otherwise({
+        redirectTo: '/'
+      });
+  };
+
+  angular.module('loc8rApp')
+    .config(['$routeProvider', config]);
+  
+})();  // close & invoke IIFE

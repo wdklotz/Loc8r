@@ -1,4 +1,7 @@
-var loc8rData = function($http, $log) {
+(function() {     // open IIFE
+
+loc8rData.$inject =    ['$http','$log'];
+function loc8rData      ($http, $log) {
    var locationByCoords = function(lat, lng) {
       $log.info('lat='+lat+', lng='+lng);
       return $http.get('/api/locations?lng=' + lng + '&lat=' + lat + '&maxDistance=15000');
@@ -11,3 +14,5 @@ var loc8rData = function($http, $log) {
 
 angular.module('loc8rApp')
   .service('loc8rData',loc8rData);
+
+})();  // close & invoke IIFE

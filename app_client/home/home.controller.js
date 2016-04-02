@@ -1,4 +1,7 @@
-function homeCtrl ($scope, loc8rData, geolocation) {
+(function() {     // open IIFE
+
+  homeCtrl.$inject =  ['$scope', 'loc8rData', 'geolocation'];
+  function homeCtrl   ($scope,    loc8rData,   geolocation) {
   var vm = this;
   vm.pageHeader = {
     title: 'Loc8r',
@@ -39,3 +42,5 @@ function homeCtrl ($scope, loc8rData, geolocation) {
 
 angular.module('loc8rApp')
   .controller('homeCtrl', homeCtrl);
+
+})();  // close & invoke IIFE

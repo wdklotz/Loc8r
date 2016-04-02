@@ -1,3 +1,5 @@
+(function() {     // open IIFE
+
 var geolocation = function() {
   var getPosition = function(cbSuccess, cbError, cbNoGeo) {
     if (navigator.geolocation) {
@@ -13,3 +15,5 @@ var geolocation = function() {
 
 angular.module('loc8rApp')
   .service('geolocation', geolocation);
+
+})();  // close & invoke IIFE
