@@ -86,4 +86,9 @@ var locationListCtrl = function($scope, loc8rData, geolocation) {
    geolocation.getPosition($scope.getData, $scope.showError, $scope.noGeo);
 };
 
-angular.module('loc8rApp').controller('locationListCtrl', locationListCtrl).filter('formatDistance', formatDistance).directive('ratingStars', ratingStars).service('loc8rData', loc8rData).service('geolocation', geolocation);
+angular.module('loc8rApp')
+	.controller('locationListCtrl', locationListCtrl)
+	.filter('formatDistance', formatDistance)
+	.directive('ratingStars', ratingStars)
+	.service('loc8rData', loc8rData)
+	.service('geolocation', geolocation);
