@@ -4,11 +4,11 @@
   function homeCtrl   ($scope,    loc8rData,   geolocation) {
   var vm = this;
   vm.pageHeader = {
-    title: 'Loc8r',
-    strapline: 'Find place to work with wifi near you (SPA version)'
+    title: 'Loc8r(SPA version)',
+    strapline: 'Find place to work with wifi near you'
   };
   vm.sidebar = {
-    content: 'The new homeCtrl controller simply binds a few data elements that we used to send to Jade from the Express controllers, but technically this is nothing alien to us after chapter 8. One thing that starts to become apparent when building up an application using separate files is the great benefit of using ....'
+    content: 'This view is generated with layout => "layout.jade"  and <ng-view> => "home.view.html"'
   };
   vm.message = 'Checking your location';
 
