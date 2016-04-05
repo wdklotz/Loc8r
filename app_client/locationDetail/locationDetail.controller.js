@@ -7,11 +7,12 @@ locationDetailCtrl.$inject = ['$routeParams', 'loc8rData'];
 function locationDetailCtrl   ($routeParams, loc8rData) {
   var vm = this;
   vm.locationid = $routeParams.locationid;
-  console.log(vm.locationid);
+  // console.log(vm.locationid);
 
   loc8rData.locationById(vm.locationid)
     .success(function(data) {
       vm.data = { location: data };
+      // console.log('vm.data==>',vm.data);
       vm.pageHeader = { title: vm.data.location.name };
     })
     .error(function(e) {
