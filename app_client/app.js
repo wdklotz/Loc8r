@@ -1,6 +1,6 @@
 (function() {     // open IIFE
 
-  angular.module('loc8rApp', ['ngRoute','ngSanitize']);
+  angular.module('loc8rApp', ['ngRoute','ngSanitize','ui.bootstrap']);
 
   function config($routeProvider, $locationProvider) {
     $routeProvider
