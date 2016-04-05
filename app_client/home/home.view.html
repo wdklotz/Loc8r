@@ -3,15 +3,6 @@
 <div class="container">
   <page-header content="vm.pageHeader"></page-header>
 
-<!-- <div id="banner" class="page-header">
-  <div class="row">
-    <div class="col-lg-6"></div>
-    <h1>
-      {{ vm.pageHeader.title }}
-      <small>{{ vm.pageHeader.strapline }}</small>
-    </h1>
-  </div>
-</div> -->
   <div class="row">
     <div class="col-xs-12 col-sm-8">
       <label for="filter">Filter results</label>
@@ -32,7 +23,8 @@
       </div>
     </div>
     <div class="col-xs-12 col-sm-4">
-      <p class="lead">{{ vm.sidebar.content }}</p>
+      <!-- <p class="lead">{{ vm.sidebar.content }}</p> -->
+      <p class="lead page-header" ng-bind-html="vm.sidebar.content | addHtmlLineBreaks"></p>
     </div>
   </div>
   <footer-generic></footer-generic>

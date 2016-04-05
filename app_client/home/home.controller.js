@@ -4,11 +4,14 @@
   function homeCtrl   ($scope,    loc8rData,   geolocation) {
   var vm = this;
   vm.pageHeader = {
-    title: 'Loc8r(SPA version)',
+    title: 'Loc8r-SPA',
     strapline: 'Find place to work with wifi near you'
   };
   vm.sidebar = {
-    content: 'This view is generated with layout => "layout.jade"  and <ng-view> => "home.view.html"'
+    content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc sed lorem ac nisi dignissim accumsan. \
+    Nullam sit amet interdum magna. Morbi quis faucibus nisi. Vestibulum mollis purus quis eros adipiscing \
+    tristique. \n\n \
+    <h6><small>This view is generated with "layout" => "app_client/index.html"  and "ngView" => "home.view.html.</small></h6>'
   };
   vm.message = 'Checking your location';
 
