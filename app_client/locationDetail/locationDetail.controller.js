@@ -32,6 +32,10 @@ function locationDetailCtrl   ($routeParams,   $uibModal,   loc8rData) {
         }
       }
     });
+
+    modalInstance.result.then(function(data){ // a promise of ...open()
+      vm.data.location.reviews.push(data);
+    });
   };
 }
 
