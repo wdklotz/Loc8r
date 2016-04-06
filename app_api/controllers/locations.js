@@ -5,21 +5,6 @@
 var mongoose = require('mongoose');
 var Loc = mongoose.model('Location');
 
-//var theEarth = (function(){
-//	var earthRadius = 6378.137; // km, miles is 3959
-//	var radperdeg = 17.453e-3;
-//	var getDistanceFromRads = function(degs) {
-//		return parseFloat(degs * earthRadius);
-//		};
-//	var getRadsFromDistance = function(distance) {
-//		return parseFloat(distance / earthRadius);
-//		};
-//	return {
-//		getDistanceFromRads : getDistanceFromRads,
-//		getRadsFromDistance : getRadsFromDistance
-//		};
-//})();
-
 var sendJsonResponse = function(res, status, content) {
   res.status(status);
   res.json(content);

@@ -7,21 +7,23 @@ var bodyParser   = require('body-parser');
 var uglifyJs     = require('uglify-js');
 var fs           = require('fs');
 
-//db connection
+// make db connection
 require('./app_api/models/db');
 
-//routing files
+// define routing files
 // var routes    = require('./app_server/routes/index');
 var routesApi = require('./app_api/routes/index');
 var users     = require('./app_server/routes/users');
 
+// that's the app instance!
 var app = express();
 app.locals.title = "Loc8r";
 
-// view engine setup
+// configure app: view engine setup
 app.set('views', path.join(__dirname, 'app_server', 'views'));
 app.set('view engine', 'jade');
 
+// minify javascript files with uglifyJs
 var appClientFiles = [
 "app_client/app.js",
 "app_client/common/directives/footerGeneric/footerGeneric.directive.js",
@@ -50,6 +52,7 @@ fs.writeFile('public/angular/loc8r.min.js', uglified.code, function (err){
   }
 });
 
+// app.use: add express middleware
 // uncomment after placing your favicon in /public
 //app.use(favicon(__dirname + '/public/favicon.ico'));
 app.use(logger('dev'));
@@ -59,10 +62,11 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'app_client')));
 
-// route request
+// route request; handled by routing middleware
 // app.use('/', routes);
-app.use('/api', routesApi);
+app.use('/api', routesApi); // keep DB-API routing
 app.use('/users', users);
+// fall through: load SPA if no route fits, replace express routing
 app.use(function(req, res) {
   res.sendFile(path.join(__dirname, 'app_client', 'index.html'));
 });
@@ -76,8 +80,7 @@ app.use(function(req, res, next) {
 });
 
 // error handlers
-// development error handler
-// will print stacktrace
+// development error handler: will print stacktrace
 if (app.get('env') === 'development') {
     app.use(function(err, req, res, next) {
         res.status(err.status || 500);
@@ -88,8 +91,7 @@ if (app.get('env') === 'development') {
     });
 }
 
-// production error handler
-// no stacktraces leaked to user
+// production error handler: no stacktraces leaked to user
 app.use(function(err, req, res, next) {
     res.status(err.status || 500);
     res.render('error', {
