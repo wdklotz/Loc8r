@@ -2,3 +2,4 @@
 node_modules
 .env
 *~
+public/angular/loc8r.min.js
