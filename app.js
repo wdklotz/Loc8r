@@ -1,3 +1,4 @@
+require('dotenv').load();
 var express      = require('express');
 var path         = require('path');
 var favicon      = require('serve-favicon');
@@ -6,9 +7,11 @@ var cookieParser = require('cookie-parser');
 var bodyParser   = require('body-parser');
 var uglifyJs     = require('uglify-js');
 var fs           = require('fs');
+var passport     = require('passport');
 
 // make db connection
 require('./app_api/models/db');
+require('./app_api/config/passport');
 
 // define routing files
 // var routes    = require('./app_server/routes/index');
@@ -61,6 +64,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'app_client')));
+app.use(passport.initialize());
 
 // route request; handled by routing middleware
 // app.use('/', routes);
