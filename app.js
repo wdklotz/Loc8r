@@ -37,6 +37,7 @@ var appClientFiles = [
 "app_client/common/filters/addHtmlLineBreaks.filter.js",
 "app_client/common/services/geolocation.service.js",
 "app_client/common/services/loc8rData.service.js",
+"app_client/common/services/authentication.service.js",
 "app_client/home/home.controller.js",
 "app_client/about/about.controller.js",
 "app_client/locationDetail/locationDetail.controller.js",

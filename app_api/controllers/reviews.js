@@ -20,11 +20,8 @@ var doAddReview = function(req, res, location, author) {
 			rating: req.body.rating,
 			reviewText: req.body.reviewText
 		});
-//	console.log('daAddReview:',location);
 	location.save(function(err, location) {
 		var thisReview;
-//		console.log('location.save(err)',err);
-//		console.log('location.save(location)',location);
 		if (err) {
 			sendJsonResponse(res, 400, err);
 		} else {
@@ -64,24 +61,6 @@ var doSetAverageRating = function(location) {
 	}
 };
 
-//-----------------------reviewsCreate-------------------
-module.exports.reviewsCreate = function(req, res) {
-	getAuthor(req, res, function(req, res, userName) {
-		var locationid = req.params.locationid;
-		if(locationid) {
-				Loc.findById(locationid).select('reviews').exec(function(err, location) {
-					if (err) {
-						sendJsonResponse(res, 400, err);
-					} else {
-						doAddReview(req, res, location, userName);
-					}
-				});
-			} else {
-				sendJsonResponse(res, 404, {"message": "Not found, locationid required"});
-			}
-	});
-};
-
 var getAuthor = function(req, res, cb) {
 	if(req.payload && req.payload.email) {
 		User.findOne({email: req.payload.email}).exec(function(err, user) {
@@ -103,6 +82,24 @@ var getAuthor = function(req, res, cb) {
 		});
 		return;
 	}
+};
+
+//-----------------------reviewsCreate-------------------
+module.exports.reviewsCreate = function(req, res) {
+	getAuthor(req, res, function(req, res, userName) {
+		var locationid = req.params.locationid;
+		if(locationid) {
+				Loc.findById(locationid).select('reviews').exec(function(err, location) {
+					if (err) {
+						sendJsonResponse(res, 400, err);
+					} else {
+						doAddReview(req, res, location, userName);
+					}
+				});
+			} else {
+				sendJsonResponse(res, 404, {"message": "Not found, locationid required"});
+			}
+	});
 };
 
 //----------------------reviewsReadOne-------------------
