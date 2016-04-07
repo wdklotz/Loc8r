@@ -27,7 +27,6 @@ userSchema.methods.setPassword = function(password) {
 userSchema.methods.generateJwt = function() {
   var expiry = new Date();
   expiry.setDate(expiry.getDate() + 7)  //Create expiry date object and set for seven days
-
   return jwt.sign ({
     _id: this._id,
     email: this.email,
@@ -42,4 +41,4 @@ userSchema.methods.validPassword = function(password) {
 };
 
 // compile the model
-var User = mongoose.model('User', userSchema);
+mongoose.model('User', userSchema);

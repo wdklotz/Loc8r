@@ -6,6 +6,7 @@ var express = require('express');
 var router = express.Router();
 var ctrlLocations = require('../controllers/locations');
 var ctrlReviews = require('../controllers/reviews');
+var ctrlAuth = require('../controllers/authentication');
 
 // locations
 router["get"]('/locations', ctrlLocations.locationsListByDistance)
@@ -19,5 +20,9 @@ router["post"]('/location/:locationid/reviews', ctrlReviews.reviewsCreate);
 router["get"]('/location/:locationid/review/:reviewid', ctrlReviews.reviewsReadOne);
 router["put"]('/location/:locationid/review/:reviewid', ctrlReviews.reviewsUpdateOne);
 router["delete"]('/location/:locationid/review/:reviewid', ctrlReviews.reviewsDeleteOne);
+
+// authentication
+router['post']('/register', ctrlAuth.register);
+router['post']('/login', ctrlAuth.login);
 
 module.exports = router;
