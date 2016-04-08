@@ -1,12 +1,4 @@
-1) generate scaffolding app:
-      express
-   oder:
-      git clone -b chapter-03 https://github.com/simonholmes/getting-MEAN.git
-2) prepare for eclipse:
-      nodeclipse -p
-3) import as eclipse project:
-      File > import > Existing Projects into Workspace > Next
+Complete application as described in the book.
+Typed in in small steps and verified.
 
-
-
-book up to part 3
+WD Klotz March 2016

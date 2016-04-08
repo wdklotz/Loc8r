@@ -20,7 +20,7 @@ function reviewModalCtrl   ($uibModalInstance,   loc8rData,   locationData) {
   vm.onSubmit = function() {
     vm.formError = "";
     // console.log('18', vm.formData);
-    if(vm.formData == undefined || !vm.formData.name || !vm.formData.rating || !vm.formData.reviewText) {
+    if(vm.formData === undefined || !vm.formData.rating || !vm.formData.reviewText) {
       vm.formError = "All fields required, please try again";
       return false;
     } else {
@@ -31,7 +31,6 @@ function reviewModalCtrl   ($uibModalInstance,   loc8rData,   locationData) {
 
   vm.doAddReview = function(locationid, formData) {
     loc8rData.addReviewById(locationid, {
-      author: formData.name,
       rating: formData.rating,
       reviewText: formData.reviewText
     })

@@ -42,7 +42,7 @@ function authentication   ($window,  $http) {
 
   var currentUser = function() {
     if(isLoggedIn()) {
-      var token = getTocken();
+      var token = getToken();
       var payload = JSON.parse($window.atob(token.split('.')[1]));
       return {email: payload.email, name: payload.name};
     }
