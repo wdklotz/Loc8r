@@ -10,11 +10,9 @@ var ctrlReviews = require('../controllers/reviews');
 var ctrlAuth = require('../controllers/authentication');
 
 // configure auth middleware:
-// define userProperty on req to be payload;
-// use secret from env
-var auth = jwt({
-  secret: process.env.JWT_SECRET,
-  userProperty: 'payload'
+var auth = jwt( {
+  secret: process.env.JWT_SECRET, // use secret from env
+  userProperty: 'payload' // define userProperty on req to be payload;
 });
 
 // locations

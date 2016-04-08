@@ -35,6 +35,7 @@ userSchema.methods.generateJwt = function() {
   }, process.env.JWT_SECRET); //Send secret for hashing algorithm to use
 };
 
+// validate form-password against model-password
 userSchema.methods.validPassword = function(password) {
   var hash = crypto.pbkdf2Sync(password, this.salt, 1000, 64).toString('hex');
   return this.hash === hash;
